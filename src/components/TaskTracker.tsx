@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 
 type Task = {
   id: number;
@@ -16,10 +16,32 @@ const initialTasks: Task[] = [
 
 export function TaskTracker() {
   const [tasks, setTasks] = useState<Task[]>(initialTasks);
+  const [newTaskTitle, setNewTaskTitle] = useState("");
+  const [validationMessage, setValidationMessage] = useState("");
 
   const completedCount = tasks.filter((task) => task.completed).length;
   const totalCount = tasks.length;
   const activeCount = totalCount - completedCount;
+
+  function handleAddTask(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const trimmedTitle = newTaskTitle.trim();
+
+    if (!trimmedTitle) {
+      setValidationMessage("Enter a task title.");
+      return;
+    }
+
+    const nextTaskId = Math.max(...tasks.map((task) => task.id), 0) + 1;
+
+    setTasks((currentTasks) => [
+      ...currentTasks,
+      { id: nextTaskId, title: trimmedTitle, completed: false },
+    ]);
+    setNewTaskTitle("");
+    setValidationMessage("");
+  }
 
   function toggleTask(taskId: Task["id"]) {
     setTasks((currentTasks) =>
@@ -39,6 +61,31 @@ export function TaskTracker() {
           <span>Completed: {completedCount}</span>
         </div>
       </div>
+
+      <form onSubmit={handleAddTask} className="space-y-2">
+        <div className="flex gap-2">
+          <label htmlFor="new-task-title" className="sr-only">
+            New task title
+          </label>
+          <input
+            id="new-task-title"
+            type="text"
+            value={newTaskTitle}
+            onChange={(event) => setNewTaskTitle(event.target.value)}
+            placeholder="Add a task"
+            className="min-w-0 flex-1 rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-300"
+          />
+          <button
+            type="submit"
+            className="rounded-md bg-slate-950 px-4 py-2 text-sm font-medium text-white transition hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-400"
+          >
+            Add
+          </button>
+        </div>
+        {validationMessage ? (
+          <p className="text-sm text-red-600">{validationMessage}</p>
+        ) : null}
+      </form>
 
       <ul className="space-y-3">
         {tasks.map((task) => (
