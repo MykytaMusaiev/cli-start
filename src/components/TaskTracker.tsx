@@ -123,7 +123,7 @@ export function TaskTracker() {
                     }`}
                     aria-hidden="true"
                   >
-                    x
+                    {"\u2713"}
                   </span>
                   <span
                     className={
