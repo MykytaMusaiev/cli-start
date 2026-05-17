@@ -13,3 +13,11 @@ Prepare the first Mini Task Tracker baseline through Codex read-only analysis an
 ```txt
 feat/task-tracker-baseline
 ```
+
+## DONE
+
+- створено TaskTracker placeholder
+- змінено page.tsx
+- pnpm lint passed
+- commit зроблено
+- next step: add local task state and mock initial UI
