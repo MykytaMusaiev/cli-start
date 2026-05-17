@@ -30,3 +30,7 @@ feat/task-tracker-baseline
 - pnpm lint passed
 - commit: feat(tasks): add task creation form
 - next: add mock async loading and final cleanup
+- mock async loading completed
+- final validation completed
+- current branch ready to merge
+- next track step: merge feature branch into main
