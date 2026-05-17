@@ -6,12 +6,10 @@
 
 ## Goal
 
-Start Track 1: Small Training Repository From Scratch.
-
-Create a minimal Next.js training repository and add the initial repository control layer before implementing product features.
+Prepare the first Mini Task Tracker baseline through Codex read-only analysis and approved implementation steps.
 
 ## Current Branch
 
 ```txt
-docs/repo-control-layer
+feat/task-tracker-baseline
 ```
