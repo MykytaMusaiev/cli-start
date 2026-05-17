@@ -25,4 +25,8 @@ feat/task-tracker-baseline
 - total / active / completed counters derived from state
 - pnpm lint passed
 - commit completed: feat(tasks): add interactive task list baseline
-- next step: add task creation form with empty title validation
+- task creation form added
+- empty title validation added
+- pnpm lint passed
+- commit: feat(tasks): add task creation form
+- next: add mock async loading and final cleanup
